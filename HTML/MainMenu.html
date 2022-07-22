@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+</head>
+
+<body>
+    <main>
+        <button onClick="optionsFunction()" type="button">
+            Options
+        </button>
+        <button onClick="playlistsFunction()" type="button">
+            Playlists
+        </button>
+        <button onClick="exercisesFunction()" type="button">
+            Exercises
+        </button>
+        <button onClick="calenderFunction()" type="button">
+            Calendar
+        </button>
+    </main>
+    <script>
+        function calenderFunction() {
+            window.location.href = "http://127.0.0.1:5500/HTML/Calendar.html";
+        }
+        function optionsFunction() {
+            window.location.href = "http://127.0.0.1:5500/HTML/Options.html";
+        }
+
+        function playlistsFunction() {
+            window.location.href = "http://127.0.0.1:5500/HTML/Playlists.html";
+        }
+        function exercisesFunction() {
+            window.location.href = "http://127.0.0.1:5500/HTML/AvailableExercises.html";
+        }
+    </script>
+</body>
+
+</html>
