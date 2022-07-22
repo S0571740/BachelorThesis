@@ -1,0 +1,12 @@
+{
+	"name": "Planking",
+	"trainedAreas": "Stomach, Spine, Back",
+	"repetitions": 1,
+	"duration": "00:45",
+	"constraints": [
+		["head", "horizontalTo", "shoulders"],
+		["shoulders", "horizontalTo", "hips"],
+		["elbows", "verticalTo", "shoulders"],
+		["wrists", "horizontalTo", "elbows"]
+	]
+}

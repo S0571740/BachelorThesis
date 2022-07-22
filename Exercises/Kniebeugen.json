@@ -1,0 +1,36 @@
+{
+	"name": "Kniebeugen",
+	"trainedAreas": "Thights",
+	"repetitions": 15,
+	"duration": "00:04",
+	"constraints": [
+		[
+			["head", "above", "shoulders"],
+			["shoulders", "above", "hips"],
+			["hips", "above", "knees"],
+			["knees", "above", "ankles"],
+			["elbows", "horizontalTo", "shoulders"],
+			["wrists", "horizontalTo", "shoulders"],
+			["leftHip", "horizontalTo", "rightHip"],
+			["leftAnkle", "horizontalTo", "rightAnkle"],
+			["head", "verticalTo", "shoulders"],
+			["shoulders", "verticalTo", "hips"],
+			["shoulders", "verticalTo", "wrists"],
+			["shoulders", "verticalTo", "elbows"]
+		],
+		[
+			["head", "above", "shoulders"],
+			["shoulders", "above", "hips"],
+			["knees", "above", "ankles"],
+			["hips", "horizontalTo", "knees"],
+			["elbows", "horizontalTo", "shoulders"],
+			["wrists", "horizontalTo", "shoulders"],
+			["leftHip", "horizontalTo", "rightHip"],
+			["leftAnkle", "horizontalTo", "rightAnkle"],
+			["head", "verticalTo", "shoulders"],
+			["shoulders", "verticalTo", "hips"],
+			["shoulders", "verticalTo", "wrists"],
+			["shoulders", "verticalTo", "elbows"]
+		]
+	]
+}

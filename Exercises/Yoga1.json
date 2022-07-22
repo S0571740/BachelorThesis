@@ -1,0 +1,34 @@
+{
+	"name": "Yoga1",
+	"trainedAreas": "inner Peace",
+	"repetitions": 1,
+	"duration": "01:00",
+	"constraints": [
+		[
+			["head", "above", "shoulders"],
+			["shoulders", "above", "hips"],
+			["hips", "above", "ankles"],
+			["elbows", "horizontalTo", "shoulders"],
+			["wrists", "horizontalTo", "shoulders"],
+			["leftHip", "horizontalTo", "rightHip"],
+			["leftAnkle", "horizontalTo", "rightAnkle"],
+			["head", "verticalTo", "shoulders"],
+			["shoulders", "verticalTo", "hips"],
+			["shoulders", "verticalTo", "wrists"],
+			["shoulders", "verticalTo", "elbows"]
+		],
+		[
+			["head", "above", "shoulders"],
+			["shoulders", "above", "hips"],
+			["hips", "above", "ankles"],
+			["elbows", "horizontalTo", "shoulders"],
+			["wrists", "horizontalTo", "shoulders"],
+			["leftHip", "horizontalTo", "rightHip"],
+			["leftAnkle", "horizontalTo", "rightAnkle"],
+			["head", "verticalTo", "shoulders"],
+			["shoulders", "verticalTo", "hips"],
+			["shoulders", "verticalTo", "wrists"],
+			["shoulders", "verticalTo", "elbows"]
+		]
+	]
+}
