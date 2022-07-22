@@ -1,0 +1,55 @@
+.all {
+	display: grid;
+	row-gap: 15px;
+}
+.container {
+	display: grid;
+
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+	grid-template-areas:
+		"image image title title title title title title"
+		"image image repetitions repetitions repetitions repetitions repetitions repetitions"
+		"areas areas areas areas areas areas areas areas"
+		"playlistLabel playlistText playlistText playlistButton startButton startButton startButton startButton";
+
+	gap: 1px;
+	height: 100%;
+
+	outline: solid;
+	outline-offset: 3px;
+}
+
+.image {
+	/* background-color: #ff0000; */
+	grid-area: image;
+}
+.title {
+	/* background-color: #00398f; */
+	grid-area: title;
+}
+.repetitions {
+	/* background-color: #00ff00; */
+	grid-area: repetitions;
+}
+.areas {
+	/* background-color: #ffff00; */
+	grid-area: areas;
+}
+.playlistLabel {
+	/* background-color: #ff00ff; */
+	grid-area: playlistLabel;
+}
+.playlistText {
+	/* background-color: #ff00ff; */
+	grid-area: playlistText;
+}
+.playlistButton {
+	/* background-color: #ff00ff; */
+	grid-area: playlistButton;
+}
+.startButton {
+	/* background-color: #00ffff; */
+	grid-area: startButton;
+}
