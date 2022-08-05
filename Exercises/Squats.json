@@ -1,13 +1,13 @@
 {
-	"name": "Yoga1",
-	"trainedAreas": "inner Peace",
-	"repetitions": 1,
-	"duration": "01:00",
+	"name": "Squats",
+	"trainedAreas": "Thights",
+	"duration": "00:04",
 	"constraints": [
 		[
 			["head", "above", "shoulders"],
 			["shoulders", "above", "hips"],
-			["hips", "above", "ankles"],
+			["hips", "above", "knees"],
+			["knees", "above", "ankles"],
 			["elbows", "horizontalTo", "shoulders"],
 			["wrists", "horizontalTo", "shoulders"],
 			["leftHip", "horizontalTo", "rightHip"],
@@ -20,7 +20,8 @@
 		[
 			["head", "above", "shoulders"],
 			["shoulders", "above", "hips"],
-			["hips", "above", "ankles"],
+			["knees", "above", "ankles"],
+			["hips", "horizontalTo", "knees"],
 			["elbows", "horizontalTo", "shoulders"],
 			["wrists", "horizontalTo", "shoulders"],
 			["leftHip", "horizontalTo", "rightHip"],
@@ -30,5 +31,11 @@
 			["shoulders", "verticalTo", "wrists"],
 			["shoulders", "verticalTo", "elbows"]
 		]
-	]
+	],
+	"instructions": [
+		"Stand with your feet between hip- and shoulder-width apart and your toes facing forward or slightly outward.",
+		"Keeping your feet flat on the floor and your back straight, brace your core and push your hips back and down until your thighs are parallel to the ground (or as low as you can comfortably go). Pause here for a brief moment",
+		"Drive through your heels to stand back up."
+	],
+	"credits": "https://www.livestrong.com/article/13767785-squat-variations/ for the instructions"
 }

@@ -1,12 +1,18 @@
 {
 	"name": "Planking",
-	"trainedAreas": "Stomach, Spine, Back",
-	"repetitions": 1,
+	"trainedAreas": "Abdominals and core muscles",
 	"duration": "00:45",
 	"constraints": [
-		["head", "horizontalTo", "shoulders"],
-		["shoulders", "horizontalTo", "hips"],
-		["elbows", "verticalTo", "shoulders"],
-		["wrists", "horizontalTo", "elbows"]
-	]
+		[
+			["head", "horizontalTo", "shoulders"],
+			["shoulders", "horizontalTo", "hips"],
+			["elbows", "verticalTo", "shoulders"],
+			["wrists", "horizontalTo", "elbows"]
+		]
+	],
+	"instructions": [
+		"Lie face down with your forearms on the floor and your elbows directly beneath your shoulders. Keep your feet flexed with the bottoms of your toes on the floor. Keep your forearms parallel to each other and don't clasp your hands in front of you. Doing so puts your shoulders in a potentially vulnerable position.",
+		"Press into your forearms and rise up on your toes so that only your forearms and toes touch the floor. Your body should hover a few inches off the floor in a straight line from shoulders to feet. Draw your navel toward your spine and tighten your glutes. Look at the floor to keep your head in a neutral alignment, and breathe normally."
+	],
+	"credit": "https://www.livestrong.com/article/319724-step-by-step-directions-on-how-to-do-the-plank/ for the instructions"
 }
