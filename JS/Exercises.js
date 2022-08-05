@@ -1,8 +1,9 @@
-const availableExercisesNames = ["Kniebeugen", "Planking", "Yoga1"];
+const availableExercisesNames = ["Squats", "Planking", "WarriorII"];
 const loadedExercises = [];
 const lookUp = new Map();
 
 const allElement = document.querySelector(".all");
+var audio = new Audio();
 
 async function loadExercises() {
 	for (let i = 0; i < availableExercisesNames.length; i++) {
@@ -25,24 +26,68 @@ async function getExercise(name) {
 
 function createDivs(exercise) {
 	let img = `<img class="image" src="https://via.placeholder.com/150">`;
-	let title = `<h1 class="title">${exercise.name}</h1>`;
+	let title = `<h2 class="title">${exercise.name}</h2>`;
+	let instructionText = "";
+	exercise.instructions.forEach(
+		(paragragh) => (instructionText += paragragh + `<br/>`)
+	);
+	let instructions = `<label class="instructions">Exercise instructions: <br/>${instructionText}</label>`;
 	let trainedAreas = `<p class="areas">Trains: ${exercise.trainedAreas}</p>`;
-	let repetitions = `<p class="repetitions">${exercise.repetitions} repetitions, each ${exercise.duration}</p>`;
+	let duration = `<p class="duration">Exercise duration: ${exercise.duration}</p>`;
 	let playlistLabel = `<label class="playlistLabel">Add to playlist:</label>`;
 	let playlistText = `<input type="text" class="playlistText" placeholder="Name of the playlist">`;
 	let playlistButton = `<button type="button" class="playlistButton" onClick="addFunction('${exercise.name}')">Add to playlist</button>`;
+	let playlist = `<div class="playlist">${playlistLabel}${playlistText}${playlistButton}</div>`;
 	let startButton = `<button type="button" class="startButton" onClick="startFunction('${exercise.name}')">Start</button>`;
-	let container = `<div class="container" id="${exercise.name}Container">${img}${title}${repetitions}${trainedAreas}${playlistLabel}${playlistText}${playlistButton}${startButton}</div>`;
+	let container = `<div class="container" id="${exercise.name}Container">${img}${title}${instructions}${duration}${trainedAreas}${playlist}${startButton}</div>`;
 	return container;
 }
 
 async function startUp() {
+	localStorage.setItem("lastLocation", "Exercises");
+	startMusic();
+	adjustBackground();
 	await loadExercises();
 	let divs = "";
 	for (let i = 0; i < loadedExercises.length; i++) {
 		divs += createDivs(loadedExercises[i]);
 	}
 	allElement.innerHTML = divs;
+}
+
+function startMusic() {
+	if (localStorage.getItem("backgroundMusic", reviver)) {
+		audio.onended = onEndedFunction;
+		audio.src =
+			"/../Assets/" +
+			JSON.parse(localStorage.getItem("backgroundMusic", reviver))[0] +
+			".mp3";
+		audio.play();
+	} else {
+		audio.pause();
+	}
+}
+
+function onEndedFunction() {
+	let songs = JSON.parse(localStorage.getItem("backgroundMusic", reviver));
+	let lastSong = songs.shift();
+	songs.push(lastSong);
+	localStorage.setItem("backgroundMusic", JSON.stringify(songs, replacer));
+	audio.src = "/../Assets/" + songs[0] + ".mp3";
+	audio.play();
+}
+
+function adjustBackground() {
+	if (localStorage.getItem("backgroundImage", reviver)) {
+		let body = document.querySelector("body");
+		body.style.backgroundImage = localStorage.getItem(
+			"backgroundImage",
+			reviver
+		);
+		body.style.backgroundSize = "cover";
+		body.style.backgroundPosition = "center";
+		body.style.backgroundRepeat = "no-repeat";
+	}
 }
 
 function startFunction(name) {
@@ -55,7 +100,6 @@ function startFunction(name) {
 function addFunction(exerciseName) {
 	let playlists = JSON.parse(localStorage.getItem("playlists"), reviver);
 	if (playlists === null) {
-		console.log("created new map");
 		playlists = new Map();
 	}
 
@@ -63,7 +107,6 @@ function addFunction(exerciseName) {
 	let playlistName = container.getElementsByClassName("playlistText")[0].value;
 
 	let playlist = undefined;
-	console.log(playlists);
 	if (playlists.get(playlistName) !== undefined) {
 		playlist = playlists.get(playlistName);
 	}
@@ -89,7 +132,7 @@ function replacer(key, value) {
 	if (value instanceof Map) {
 		return {
 			dataType: "Map",
-			value: Array.from(value.entries())
+			value: Array.from(value.entries()),
 		};
 	} else {
 		return value;
