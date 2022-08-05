@@ -5,33 +5,34 @@ html {
 .all {
 	height: 70vh;
 	display: grid;
-	row-gap: 15px;
 	overflow-y: auto;
+	row-gap: 15px;
 }
 
-.playlistContainer {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
+.container {
+	display: grid;
+
+	grid-template-rows: auto auto auto auto;
+	grid-template-columns: auto auto auto auto;
+
+	grid-template-areas:
+		"image title instructions instructions"
+		"image duration instructions instructions"
+		"areas areas areas areas"
+		"playlist playlist startButton startButton";
+
+	gap: 1px;
+	height: 100%;
 
 	background: rgba(255, 255, 255, 0.5);
 }
 
-.exerciseContainer {
-	grid-area: exerciseContainer;
+.image {
+	grid-area: image;
+}
 
-	display: grid;
-
-	grid-template-rows: auto auto auto;
-	grid-template-columns: auto auto auto;
-
-	grid-template-areas:
-		"image title instructions"
-		"image duration instructions"
-		"areas areas startButton";
-
-	gap: 1px;
-	height: 100%;
+.title {
+	grid-area: title;
 }
 
 .instructions {
@@ -40,30 +41,33 @@ html {
 	grid-area: instructions;
 }
 
-.image {
-	grid-area: image;
-}
-.title {
-	grid-area: title;
-}
 .duration {
 	grid-area: duration;
 }
+
 .areas {
 	grid-area: areas;
 }
+
+.playlist {
+	grid-area: playlist;
+}
+
 .playlistLabel {
 	grid-area: playlistLabel;
 }
+
 .playlistText {
 	grid-area: playlistText;
 }
-.playlistStartButton {
+
+.playlistButton {
 	margin: 0.5em;
 	padding: 1em 2em;
 	--hover: #00ff04;
 	grid-area: playlistButton;
 }
+
 .startButton {
 	margin: 0.5em;
 	padding: 1em 2em;
@@ -85,10 +89,10 @@ nav ul {
 
 .raise:hover,
 .raise:focus,
-.playlistStartButton:hover,
-.playlistStartButton:focus,
+.playlistButton:hover,
+.playlistButton:focus,
 .startButton:hover,
-.startButton:focus  {
+.startButton:focus {
 	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
 	transform: translateY(-0.25em);
 }

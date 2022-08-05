@@ -1,0 +1,109 @@
+html {
+	height: 100vh;
+}
+
+header {
+	text-align: center;
+}
+
+nav ul {
+	margin: 20px;
+	border-radius: 10px;
+	justify-content: space-around;
+	display: flex;
+	list-style-type: none;
+}
+
+main {
+	display: grid;
+
+	grid-template-rows: auto auto auto;
+	grid-template-columns: auto auto;
+
+	grid-template-areas:
+		"heading heading"
+		"dropBoxOne dropBoxTwo"
+		"image image";
+}
+
+.raise:hover,
+.raise:focus {
+	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+	transform: translateY(-0.25em);
+}
+
+.raise {
+	margin: 0.5em;
+	padding: 1em 2em;
+	--hover: #00ff04;
+}
+
+.testButton {
+	font-weight: bold;
+	--hover: #00ff04;
+}
+
+.testButton:hover,
+.testButton:focus {
+	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+	transform: translateY(-0.25em);
+}
+
+button {
+	background: rgba(255, 255, 255, 0.5);
+	border: 2px solid;
+	font: inherit;
+	font-weight: bold;
+	line-height: 1;
+	border-radius: 12px;
+}
+
+.drop-targets {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+
+	margin: 20px 0;
+}
+
+.dropBox {
+	background: rgba(255, 255, 255, 0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	border: 2px solid black;
+	border-radius: 12px;
+	font-weight: bold;
+}
+
+#playlisSongs {
+	grid-area: dropBoxTwo;
+}
+
+#availableSongs {
+	grid-area: dropBoxOne;
+}
+
+h3 {
+	background: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	font-weight: bold;
+	grid-area: heading;
+}
+
+h1 {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+label {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	grid-area: image;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.5);
+}

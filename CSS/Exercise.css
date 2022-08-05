@@ -1,0 +1,113 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  grid-template-areas:
+    "canvas canvas nextExerciseInstructions startButtonOrTimerOrExitButtonLoadButton"
+    "canvas canvas errorLog score"
+    "canvas canvas redirect redirect"
+}
+
+canvas {
+  grid-area: canvas;
+  display: block;
+}
+
+label {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.startButtonOrTimerOrExitButtonOrLoadButton {
+  grid-area: startButtonOrTimerOrExitButtonLoadButton;
+}
+
+.timer {
+  grid-area: timer;
+}
+
+.score {
+  grid-area: score;
+}
+
+.errorLog {
+  grid-area: errorLog;
+}
+
+.nextExerciseInstructions {
+  grid-area: nextExerciseInstructions;
+}
+
+.redirect {
+  grid-area: redirect;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+button {
+  margin: 0.5em;
+  padding: 1em 2em;
+  --hover: #00ff04;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid;
+  font: inherit;
+  font-weight: bold;
+  line-height: 1;
+  border-radius: 12px;
+}
+
+.base-timer {
+  grid-area: startButtonOrTimerOrExitButtonLoadButton;
+  font-family: sans-serif;
+  position: relative;
+  width: 75%;
+  height: 75%;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+  color: #00ff04;
+}
+
+
+.base-timer__label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}

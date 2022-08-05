@@ -1,0 +1,40 @@
+html {
+    height: 100vh;
+}
+
+header {
+	text-align: center;
+}
+
+nav ul {
+	margin: 20px;
+	border-radius: 10px;
+	justify-content: space-around;
+	display: flex;
+	list-style-type: none;
+}
+
+.raise:hover,
+.raise:focus {
+	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+	transform: translateY(-0.25em);
+}
+
+.raise {
+	margin: 0.5em;
+	padding: 1em 2em;
+	--hover: #00ff04;
+}
+
+button {
+	background: rgba(255, 255, 255, 0.5);
+	border: 2px solid;
+	font: inherit;
+	font-weight: bold;
+	line-height: 1;
+	border-radius: 12px;
+}
+
+h1 {
+	background: rgba(255, 255, 255, 0.5);
+}
