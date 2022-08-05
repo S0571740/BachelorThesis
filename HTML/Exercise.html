@@ -2,17 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Exercise</title>
+
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" type="text/css" href="../CSS/Exercise.css">
+
+	<script src="../JS/libraries/p5.min.js"></script>
+	<script src="../JS/libraries/p5.sound.min.js"></script>
+	<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 </head>
 
 <body>
-    <main>
-        <div>
-            
-        </div>
-    </main>
+	<main>
+		<img>
+		<button type="button" id="loadButton" class="startButtonOrTimerOrExitButtonOrLoadButton">Load next Exercise</button>
+		<button type="button" id="startButton" class="startButtonOrTimerOrExitButtonOrLoadButton" hidden>Start Exercise</button>
+		<button type="button" id="exitButton" class="startButtonOrTimerOrExitButtonOrLoadButton" hidden>Go back</button>
+		<div class="base-timer" hidden>
+			<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+				<g class="base-timer__circle">
+					<circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+					<path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining" d=" M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0 " ></path>
+				</g>
+			</svg>
+			<span id="base-timer-label" class="base-timer__label"></span>
+		</div>
+		<label class="nextExerciseInstructions"></label>
+		<label class="errorLog"></label>
+		<label class="score">Current Score: </label>
+		<!-- <button type="button" class="redirect"> temp Button</button> -->
+	</main>
+	<script src="../JS/Exercise.js"></script>
 </body>
 
 </html>

@@ -4,38 +4,40 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../CSS/MainMenu.css" />
     <title>Main Menu</title>
 </head>
 
-<body>
-    <main>
-        <button onClick="optionsFunction()" type="button">
-            Options
-        </button>
-        <button onClick="playlistsFunction()" type="button">
-            Playlists
-        </button>
-        <button onClick="exercisesFunction()" type="button">
-            Exercises
-        </button>
-        <button onClick="calenderFunction()" type="button">
-            Calendar
-        </button>
-    </main>
-    <script>
-        function calenderFunction() {
-            window.location.href = "http://127.0.0.1:5500/HTML/Calendar.html";
-        }
-        function optionsFunction() {
-            window.location.href = "http://127.0.0.1:5500/HTML/Options.html";
-        }
+<header>
+    <h1> Main Menu </h1>
+    <nav>
+        <ul>
+            <li style='list-style-type: none'>
+                <button type="button" class="raise"
+                    onclick='window.location.href="http://127.0.0.1:5500/HTML/Calendar.html"'>Calendar </button>
+            </li>
+            <li style='list-style-type: none'>
+                <button type="button" class="raise"
+                    onclick='window.location.href="http://127.0.0.1:5500/HTML/Options.html"'>Options </button>
+            </li>
+            <li style='list-style-type: none'>
+                <button type="button" class="raise"
+                    onclick='window.location.href="http://127.0.0.1:5500/HTML/MainMenu.html"'>Main Menu </button>
+            </li>
+            <li style='list-style-type: none'>
+                <button type="button" class="raise"
+                    onclick='window.location.href="http://127.0.0.1:5500/HTML/Exercises.html"'>Exercises </button>
+            </li>
+            <li style='list-style-type: none'>
+                <button type="button" class="raise"
+                    onclick='window.location.href="http://127.0.0.1:5500/HTML/Playlists.html"'>Playlists </button>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-        function playlistsFunction() {
-            window.location.href = "http://127.0.0.1:5500/HTML/Playlists.html";
-        }
-        function exercisesFunction() {
-            window.location.href = "http://127.0.0.1:5500/HTML/AvailableExercises.html";
-        }
+<body>
+    <script src="../JS/MainMenu.js">
     </script>
 </body>
 
