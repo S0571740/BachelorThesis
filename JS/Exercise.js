@@ -541,7 +541,7 @@ function setButtonFunctions() {
 
 function redirectButtonFunction() {
 	let lastLocation = localStorage.getItem("lastLocation");
-	window.location.href = "http://127.0.0.1:5500/HTML/" + lastLocation + ".html";
+	window.location.href = "http://127.0.0.1:8000/HTML/" + lastLocation + ".html";
 }
 
 function loadButtonFunction() {
@@ -605,7 +605,7 @@ function startButtonFunction() {
 
 function exitButtonFunction() {
 	window.location.href =
-		"http://127.0.0.1:5500/HTML/" +
+		"http://127.0.0.1:8000/HTML/" +
 		localStorage.getItem("lastLocation") +
 		".html";
 }

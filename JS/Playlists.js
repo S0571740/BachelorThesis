@@ -72,7 +72,7 @@ async function startUp() {
 			divs += createDivsPlaylist(key, value);
 		});
 	} else {
-		let a = `<a href="http://127.0.0.1:5500/HTML/Exercises.html">exercises</a>`;
+		let a = `<a href="http://127.0.0.1:8000/HTML/Exercises.html">exercises</a>`;
 		divs = `<h1>No Playlists created yet. Head over to ${a} and create a playlist.</h1>`;
 	}
 	allElement.innerHTML = divs;
@@ -138,11 +138,11 @@ function startFunction(name) {
 	let playlist = new Array();
 	playlist.push(name);
 	localStorage.setItem("exercising", JSON.stringify(playlist, replacer));
-	window.location.href = "http://127.0.0.1:5500/HTML/Exercise.html";
+	window.location.href = "http://127.0.0.1:8000/HTML/Exercise.html";
 }
 
 function startPlaylistFunction(exerciseArray) {
 	localStorage.setItem("exercising", JSON.stringify(exerciseArray, replacer));
-	window.location.href = "http://127.0.0.1:5500/HTML/Exercise.html";
+	window.location.href = "http://127.0.0.1:8000/HTML/Exercise.html";
 }
 startUp();
