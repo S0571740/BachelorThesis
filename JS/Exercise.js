@@ -599,7 +599,7 @@ function startButtonFunction() {
 
 function exitButtonFunction() {
 	window.location.href =
-		"http://127.0.0.1:8000/HTML/" +
+		"http://s0571740thesis.herokuapp.com/HTML/" +
 		localStorage.getItem("lastLocation") +
 		".html";
 }
