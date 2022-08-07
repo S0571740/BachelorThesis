@@ -1,4 +1,4 @@
-const availableExercisesNames = ["Squats", "Planking", "WarriorII"];
+const availableExercisesNames = new Array();
 const loadedExercises = [];
 const lookUp = new Map();
 
@@ -6,6 +6,11 @@ const allElement = document.querySelector(".all");
 var audio = new Audio();
 
 async function loadExercises() {
+	let exerciseNames = loadExerciseNames();
+	exerciseNames = await exerciseNames;
+	for (let i = 0; i < exerciseNames.length; i++) {
+		availableExercisesNames.push(exerciseNames[i]);
+	}
 	for (let i = 0; i < availableExercisesNames.length; i++) {
 		let temp = getExercise(availableExercisesNames[i]);
 		temp = await temp;
@@ -21,6 +26,16 @@ async function getExercise(name) {
 		return json;
 	} else {
 		alert("could'nt get Exercises/" + name + ".json");
+	}
+}
+
+async function loadExerciseNames() {
+	let response = await fetch("./../Assets/AvailableExercises.json");
+	if (response.ok) {
+		let json = await response.json();
+		return json;
+	} else {
+		alert("could'nt find Assets/AvailableExercises.json");
 	}
 }
 

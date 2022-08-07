@@ -1,4 +1,4 @@
-const availableExercisesNames = ["Squats", "Planking", "WarriorII"];
+const availableExercisesNames = new Array();
 const loadedExercises = [];
 const lookUp = new Map();
 
@@ -8,11 +8,26 @@ const allElement = document.querySelector(".all");
 var audio = new Audio();
 
 async function loadExercises() {
+	let exerciseNames = loadExerciseNames();
+	exerciseNames = await exerciseNames;
+	for (let i = 0; i < exerciseNames.length; i++) {
+		availableExercisesNames.push(exerciseNames[i]);
+	}
 	for (let i = 0; i < availableExercisesNames.length; i++) {
 		let temp = getExercise(availableExercisesNames[i]);
 		temp = await temp;
 		loadedExercises.push(temp);
 		lookUp.set(temp.name, loadedExercises.indexOf(temp));
+	}
+}
+
+async function loadExerciseNames() {
+	let response = await fetch("./../Assets/AvailableExercises.json");
+	if (response.ok) {
+		let json = await response.json();
+		return json;
+	} else {
+		alert("could'nt find Assets/AvailableExercises.json");
 	}
 }
 
@@ -51,7 +66,9 @@ function createDivsExercises(exercise, playlistName) {
 	let img = `<img class="image" src="../Assets/${exercise.name}.gif">`;
 	let title = `<h2 class="title">${exercise.name}</h2>`;
 	let instructionText = "";
-	exercise.instructions.forEach(paragragh => instructionText += paragragh + `<br/>`);
+	exercise.instructions.forEach(
+		(paragragh) => (instructionText += paragragh + `<br/>`)
+	);
 	let instructions = `<label class="instructions">Exercise instructions: <br/>${instructionText}</label>`;
 	let trainedAreas = `<p class="areas">Trains: ${exercise.trainedAreas}</p>`;
 	let duration = `<p class="duration">Exercise duration: ${exercise.duration}</p>`;
