@@ -599,7 +599,7 @@ function startButtonFunction() {
 
 function exitButtonFunction() {
 	window.location.href =
-		"http://s0571740thesis.herokuapp.com/HTML/" +
+		"http://loquacious-cat-52d8b6.netlify.app/HTML/" +
 		localStorage.getItem("lastLocation") +
 		".html";
 }

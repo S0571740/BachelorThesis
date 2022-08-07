@@ -2,7 +2,7 @@
   "name": "ml5",
   "version": "1.0.0",
   "description": "\"# ML5-BachelorThesis\"",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

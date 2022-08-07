@@ -109,7 +109,7 @@ function startFunction(name) {
 	let playlist = new Array();
 	playlist.push(name);
 	localStorage.setItem("exercising", JSON.stringify(playlist, replacer));
-	window.location.href = "http://s0571740thesis.herokuapp.com/HTML/Exercise.html";
+	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 
 function addFunction(exerciseName) {

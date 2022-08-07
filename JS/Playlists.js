@@ -88,7 +88,7 @@ async function startUp() {
 			divs += createDivsPlaylist(key, value);
 		});
 	} else {
-		let a = `<a href="http://s0571740thesis.herokuapp.com/HTML/Exercises.html">exercises</a>`;
+		let a = `<a href="http://loquacious-cat-52d8b6.netlify.app/HTML/Exercises.html">exercises</a>`;
 		divs = `<h1>No Playlists created yet. Head over to ${a} and create a playlist.</h1>`;
 	}
 	allElement.innerHTML = divs;
@@ -154,11 +154,11 @@ function startFunction(name) {
 	let playlist = new Array();
 	playlist.push(name);
 	localStorage.setItem("exercising", JSON.stringify(playlist, replacer));
-	window.location.href = "http://s0571740thesis.herokuapp.com/HTML/Exercise.html";
+	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 
 function startPlaylistFunction(exerciseArray) {
 	localStorage.setItem("exercising", JSON.stringify(exerciseArray, replacer));
-	window.location.href = "http://s0571740thesis.herokuapp.com/HTML/Exercise.html";
+	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 startUp();
