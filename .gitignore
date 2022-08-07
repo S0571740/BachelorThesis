@@ -2,3 +2,8 @@
 jsconfig.json
 TODOS.md
 *.mp3
+!Assets/Song1.mp3
+!Assets/Song2.mp3
+!Assets/Song3.mp3
+!Assets/Song4.mp3
+!Assets/Song5.mp3
