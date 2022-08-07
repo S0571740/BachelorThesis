@@ -536,12 +536,6 @@ function setButtonFunctions() {
 	document.querySelector("#startButton").onclick = startButtonFunction;
 	document.querySelector("#loadButton").onclick = loadButtonFunction;
 	document.querySelector("#exitButton").onclick = exitButtonFunction;
-	document.querySelector(".redirect").onclick = redirectButtonFunction;
-}
-
-function redirectButtonFunction() {
-	let lastLocation = localStorage.getItem("lastLocation");
-	window.location.href = "http://127.0.0.1:8000/HTML/" + lastLocation + ".html";
 }
 
 function loadButtonFunction() {
