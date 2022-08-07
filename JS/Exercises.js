@@ -25,7 +25,7 @@ async function getExercise(name) {
 }
 
 function createDivs(exercise) {
-	let img = `<img class="image" src="https://via.placeholder.com/150">`;
+	let img = `<img class="image" src="../Assets/${exercise.name}.gif">`;
 	let title = `<h2 class="title">${exercise.name}</h2>`;
 	let instructionText = "";
 	exercise.instructions.forEach(
