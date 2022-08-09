@@ -36,7 +36,9 @@ more information and don't need to be included in your Exercise.json):
 }
 
 Constraints are saved as arrays of arrays of arrays, which might seem a little bit confusing, but is actualy quite simple. You start by create a array ("[]") and insert another array inside of it ("[[]]"). In the inner array you can now add an array of constraints that should be tested for ("[[["PartA", "verb", "PartB"]]]"). If your Exercise got more than one pose that should be evaluated, create another array after the second array and fill it with the second batch of constraints ("[[["PartA", "verb", "PartB"]],[["PartC", "verb", "PartB"]]]"). You might also want to add multiple constraints to a single pose. This is achieved by adding multiple values to the innermost array ("[[["PartA", "verb", "PartB"]],[["PartC", "verb", "PartB"],["PartF","verb","PartG"]]]").
+
 Available Parts: nose, leftEye, rightEye, leftEar, rightEar, leftShoulder, rightShoulder, leftElbow, rightElbow, leftWrist, rightWrist, leftHip, rightHip, leftKnee, rightKnee, leftAnkle, rightAnkle, ankles, ears, elbows, eyes, head, hip, knees, shoulder, wrists
+
 Available Verbs: above, below, horizontalTo, verticalTo
 
 Lastly you need to add your newly created file name to the list of Exercises located in Assets/AvailableExercises.json. If you want to add an image for your exercise, put it also inside the Assets folder, saved as ExerciseName.gif.
