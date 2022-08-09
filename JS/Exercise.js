@@ -256,7 +256,7 @@ function writeWord(word, red, green, blue, heigth) {
 }
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------\\
-||																	TBD																		||
+||																	TBD															s				||
 \\----------------------------------------------------------------------------------------------------------------------------------------------*/
 
 function evaluateConstraint(constraints) {
@@ -264,19 +264,19 @@ function evaluateConstraint(constraints) {
 	let failed = 0;
 	let perfect = 0;
 	let correctionTexts = new Array();
-	for (let i = 0; i < constraints.length; i++) {
+	for (let i = 0; i < constraints.length; i++) {							// Iterriere über alle Constraints
 		let partA = translatePart(constraints[i][0]);
 		let partB = translatePart(constraints[i][2]);
-		if (!isConfident(partA) || !isConfident(partB)) {
-			notFound++;
+		if (!isConfident(partA) || !isConfident(partB)) {					// Überprüfe ob die beiden Parts gefunden werden
+			notFound++;														// Ansonsten gebe eine Nachricht aus und verringere die Genauigkeit
 			if (!isConfident(partA)) {
 				correctionTexts.push("couldn't find " + constraints[i][0]);
 			}
 			if (!isConfident(partB)) {
 				correctionTexts.push("couldn't find " + constraints[i][2]);
 			}
-		} else if (
-			isConfident(partA) &&
+		} else if (															// Wenn beide Parts gefunden wurden, der Constraint allerdings fehlschlägt
+			isConfident(partA) &&											// gib eine Nachricht aus und verringere den Punktestand
 			isConfident(partB) &&
 			!translateFunction(constraints[i][1], partA, partB)
 		) {
@@ -289,8 +289,8 @@ function evaluateConstraint(constraints) {
 					" your " +
 					constraints[i][2]
 			);
-		} else if (
-			isConfident(partA) &&
+		} else if (															// Wenn sowohl beide Parts gefunden werden, als auch der Constraint richtig
+			isConfident(partA) &&											// evaluiert wird, erhöhe den Punktestand
 			isConfident(partB) &&
 			translateFunction(constraints[i][1], partA, partB)
 		) {
