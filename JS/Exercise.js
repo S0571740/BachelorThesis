@@ -156,6 +156,8 @@ function updateErrorLog(correctionTexts) {
 function updateScoreAndAccuracy(failed, perfect, notFound) {
 	let scoreElement = document.querySelector(".score");
 	let score = 0;
+	console.log(failed);
+	console.log(perfect);
 	if (failed + perfect !== 0) {
 		score = perfect / (failed + perfect);
 	}
@@ -246,7 +248,12 @@ function adjustBackground() {
 \\----------------------------------------------------------------------------------------------------------------------------------------------*/
 
 function draw() {
+	push();
+	scale(-1, 1);
+	translate(-canvasWidth, 0);
 	image(video, 0, 0, canvasWidth, canvasHeight);
+	pop()
+	
 	if (pose) {
 		drawPose();
 	}
@@ -257,15 +264,22 @@ function draw() {
 }
 
 function drawPose() {
+	push();
+	scale(-1, 1);
+	translate(-canvasWidth, 0);
 	for (let i = 0; i < pose.keypoints.length; i++) {
 		let x = pose.keypoints[i].position.x;
 		let y = pose.keypoints[i].position.y;
 		fill(0, 255, 0);
 		ellipse(x, y, 16, 16);
 	}
+	pop()
 }
 
 function drawSkeleton() {
+	push();
+	scale(-1, 1);
+	translate(-canvasWidth, 0);
 	for (let i = 0; i < skeleton.length; i++) {
 		let a = skeleton[i][0].position;
 		let b = skeleton[i][1].position;
@@ -273,6 +287,7 @@ function drawSkeleton() {
 		stroke(0, 0, 0);
 		line(a.x, a.y, b.x, b.y);
 	}
+	pop()
 }
 
 function writeWord(word, heigth) {
