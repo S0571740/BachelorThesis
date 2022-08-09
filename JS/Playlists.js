@@ -13,12 +13,26 @@ async function loadExercises() {
 	for (let i = 0; i < exerciseNames.length; i++) {
 		availableExercisesNames.push(exerciseNames[i]);
 	}
+	let userCreatedExercises = JSON.parse(
+		localStorage.getItem("userCreatedExercises"),
+		reviver
+	);
 	for (let i = 0; i < availableExercisesNames.length; i++) {
 		let temp = getExercise(availableExercisesNames[i]);
 		temp = await temp;
 		loadedExercises.push(temp);
 		lookUp.set(temp.name, loadedExercises.indexOf(temp));
 	}
+	if (userCreatedExercises != null) {
+		userCreatedExercises.forEach((exercise) =>
+			loadUserCreatedExercise(exercise)
+		);
+	}
+}
+
+function loadUserCreatedExercise(exercise) {
+	loadedExercises.push(exercise);
+	lookUp.set(exercise.name, loadedExercises.indexOf(exercise));
 }
 
 async function loadExerciseNames() {

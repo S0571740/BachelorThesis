@@ -11,12 +11,26 @@ async function loadExercises() {
 	for (let i = 0; i < exerciseNames.length; i++) {
 		availableExercisesNames.push(exerciseNames[i]);
 	}
+	let userCreatedExercises = JSON.parse(
+		localStorage.getItem("userCreatedExercises"),
+		reviver
+	);
 	for (let i = 0; i < availableExercisesNames.length; i++) {
 		let temp = getExercise(availableExercisesNames[i]);
 		temp = await temp;
 		loadedExercises.push(temp);
 		lookUp.set(temp.name, loadedExercises.indexOf(temp));
 	}
+	if (userCreatedExercises != null) {
+		userCreatedExercises.forEach((exercise) =>
+			loadUserCreatedExercise(exercise)
+		);
+	}
+}
+
+function loadUserCreatedExercise(exercise) {
+	loadedExercises.push(exercise);
+	lookUp.set(exercise.name, loadedExercises.indexOf(exercise));
 }
 
 async function getExercise(name) {
@@ -109,7 +123,8 @@ function startFunction(name) {
 	let playlist = new Array();
 	playlist.push(name);
 	localStorage.setItem("exercising", JSON.stringify(playlist, replacer));
-	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
+	window.location.href =
+		"http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 
 function addFunction(exerciseName) {
@@ -139,6 +154,35 @@ function addFunction(exerciseName) {
 		} else {
 			alert("already in playlist");
 		}
+	}
+}
+
+function uploadExercise(file) {
+	let reader = new FileReader();
+
+	reader.onload = processJson;
+	reader.readAsText(file.files[0]);
+}
+
+function processJson(event) {
+	let json = JSON.parse(event.target.result, reviver);
+	if (availableExercisesNames.indexOf(json.name) !== -1) {
+		alert(json.name + " already exists and can't be overwritten");
+	} else {
+		let userCreatedExercises = JSON.parse(
+			localStorage.getItem("userCreatedExercises"),
+			reviver
+		);
+		if (userCreatedExercises === null) {
+			userCreatedExercises = new Map();
+		}
+		userCreatedExercises.set(json.name, json);
+		localStorage.setItem(
+			"userCreatedExercises",
+			JSON.stringify(userCreatedExercises, replacer)
+		);
+		alert(json.name + " has been added to selection");
+		window.location.reload(true);
 	}
 }
 

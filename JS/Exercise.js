@@ -1,17 +1,13 @@
-const availableExercisesNames = ["Squats", "Planking", "WarriorII"];
+const availableExercisesNames = new Array();
 const loadedExercises = [];
 const lookUp = new Map();
+
 const date = new Date();
 var audio = new Audio();
 
-const intervals = new Map();
 var countdown = 10;
 var totalScore = 0;
 var totalAccuracy = new Array();
-
-var timers = new Array();
-var done = false;
-var working = true;
 
 let exerciseNames = JSON.parse(localStorage.getItem("exercising"), reviver);
 var currentExerciseName;
@@ -28,21 +24,50 @@ let pose;
 let skeleton;
 
 async function loadExercises() {
+	let exerciseNames = loadExerciseNames();
+	exerciseNames = await exerciseNames;
+	for (let i = 0; i < exerciseNames.length; i++) {
+		availableExercisesNames.push(exerciseNames[i]);
+	}
+	let userCreatedExercises = JSON.parse(
+		localStorage.getItem("userCreatedExercises"),
+		reviver
+	);
 	for (let i = 0; i < availableExercisesNames.length; i++) {
 		let temp = getExercise(availableExercisesNames[i]);
 		temp = await temp;
 		loadedExercises.push(temp);
 		lookUp.set(temp.name, loadedExercises.indexOf(temp));
 	}
+	if (userCreatedExercises != null) {
+		userCreatedExercises.forEach((exercise) =>
+			loadUserCreatedExercise(exercise)
+		);
+	}
+}
+
+function loadUserCreatedExercise(exercise) {
+	loadedExercises.push(exercise);
+	lookUp.set(exercise.name, loadedExercises.indexOf(exercise));
 }
 
 async function getExercise(name) {
-	let response = await fetch("/Exercises/" + name + ".json");
+	let response = await fetch("./../Exercises/" + name + ".json");
 	if (response.ok) {
 		let json = await response.json();
 		return json;
 	} else {
 		alert("could'nt get Exercises/" + name + ".json");
+	}
+}
+
+async function loadExerciseNames() {
+	let response = await fetch("./../Assets/AvailableExercises.json");
+	if (response.ok) {
+		let json = await response.json();
+		return json;
+	} else {
+		alert("could'nt find Assets/AvailableExercises.json");
 	}
 }
 
@@ -228,7 +253,7 @@ function draw() {
 	if (skeleton) {
 		drawSkeleton();
 	}
-	writeWord(currentExerciseName, 0, 0, 0, canvasHeight - 40);
+	writeWord(currentExerciseName, canvasHeight - 40);
 }
 
 function drawPose() {
@@ -250,8 +275,7 @@ function drawSkeleton() {
 	}
 }
 
-function writeWord(word, red, green, blue, heigth) {
-	// fill(red, green, blue);
+function writeWord(word, heigth) {
 	text(word, canvasWidth / 2, heigth);
 }
 
