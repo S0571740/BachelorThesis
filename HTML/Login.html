@@ -13,61 +13,12 @@
         <form id="login-form">
             <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
             <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-            <input type="submit" value="Login" id="login-form-submit">
+            <button type="button" onclick="login()">LogIn</button>
+            <button type="button" onclick="register()">Register</button>
         </form>
 
     </main>
-    <script>
-
-        const trainedDaysOfCurrentMonth = [];
-        const date = new Date();
-
-        for (let i = 0; i < date.getDate() - 1; i++) {
-            if (Math.random() < 0.5) {
-                trainedDaysOfCurrentMonth.push(i + 1);
-            }
-        }
-
-        localStorage.setItem("trainedDays", JSON.stringify(trainedDaysOfCurrentMonth, replacer));
-
-
-        const loginForm = document.getElementById("login-form");
-        const loginButton = document.getElementById("login-form-submit");
-
-        loginButton.addEventListener("click", (e) => {
-            e.preventDefault();
-            const username = loginForm.username.value;
-            const password = loginForm.password.value;
-
-            if (username === "test" && password === "123") {
-                window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/MainMenu.html";
-            } else {
-                alert("Wrong combination of username and password");
-            }
-        })
-
-        //see https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
-        function replacer(key, value) {
-            if (value instanceof Map) {
-                return {
-                    dataType: "Map",
-                    value: Array.from(value.entries())
-                };
-            } else {
-                return value;
-            }
-        }
-
-        function reviver(key, value) {
-            if (typeof value === "object" && value !== null) {
-                if (value.dataType === "Map") {
-                    return new Map(value.value);
-                }
-            }
-            return value;
-        }
-
-    </script>
+    <script src="./../JS/Login.js"></script>
 </body>
 
 </html>
