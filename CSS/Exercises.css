@@ -104,7 +104,7 @@ nav ul {
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 	background: rgba(255, 255, 255, 0.5);
 	border: 2px solid;
 	font: inherit;
@@ -114,5 +114,9 @@ button {
 }
 
 h1 {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+label {
 	background: rgba(255, 255, 255, 0.5);
 }
