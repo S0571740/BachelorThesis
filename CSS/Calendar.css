@@ -8,6 +8,14 @@ i {
   padding: 20px;
 }
 
+.fas.fa-angle-left.prev:hover {
+  background-color: #458f73;
+}
+
+.fas.fa-angle-right.next:hover {
+  background-color: #458f73;
+}
+
 .container {
   width: 99vw;
   grid-area: calender;
@@ -75,7 +83,6 @@ i {
   box-sizing: border-box;
   background-color: #262626;
   border: 0.2rem solid #777;
-  cursor: pointer;
 }
 
 .prev-date,
@@ -154,6 +161,7 @@ nav ul {
 }
 
 button {
+  cursor: pointer;
 	background: rgba(255, 255, 255, 0.5);
 	border: 2px solid;
 	font: inherit;
