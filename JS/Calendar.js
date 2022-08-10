@@ -148,7 +148,12 @@ function exportFunction() {
 		let yyyy = date.getFullYear();
 		exportData += yyyy + "-" + mm + "-" + dd + "\n";
 	}
-	save(exportData);
+	if(exportData === ""){
+		alert("No data available. Please Exercise atleast one day, before trying to export")
+	}
+	else{
+		save(exportData);
+	}
 }
 
 function padNumber(number) {
