@@ -8,8 +8,6 @@ function login() {
 }
 
 async function verifyLogin(username, password) {
-	let loginData = JSON.parse(localStorage.getItem("login"), reviver);
-
 	// const data = { username, password };
 	// const options = {
 	// 	method: "POST",
@@ -26,7 +24,7 @@ async function verifyLogin(username, password) {
 	// // 	}
 	// console.log(response);
 	// });
-
+	let loginData = getLoginData();
 	if (
 		loginData.get(username) !== undefined &&
 		loginData.get(username) === password
@@ -42,7 +40,7 @@ function register() {
 	const username = loginForm.username.value;
 	const password = loginForm.password.value;
 
-	let loginData = JSON.parse(localStorage.getItem("login"), reviver);
+	let loginData = getLoginData();
 	if (loginData.get(username) !== undefined) {
 		alert("User already registered");
 	} else {
@@ -50,6 +48,15 @@ function register() {
 		localStorage.setItem("login", JSON.stringify(loginData, replacer));
 		alert("User is now available");
 	}
+}
+
+function getLoginData() {
+	let loginData = JSON.parse(localStorage.getItem("login"), reviver);
+	if (loginData === null) {
+		loginData = new Map();
+		localStorage.setItem("login", JSON.stringify(loginData, replacer));
+	}
+	return loginData;
 }
 
 //see https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map

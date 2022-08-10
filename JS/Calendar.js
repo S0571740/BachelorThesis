@@ -60,10 +60,10 @@ function adjustBackground() {
 
 startUp();
 
-const trainedDaysOfCurrentMonth = JSON.parse(
-	localStorage.getItem("trainedDays"),
-	reviver
-);
+const trainedDaysOfCurrentMonth =
+	JSON.parse(localStorage.getItem("trainedDays"), reviver) === null
+		? new Array()
+		: JSON.parse(localStorage.getItem("trainedDays"), reviver);
 
 const renderCalendar = () => {
 	date.setDate(1);
