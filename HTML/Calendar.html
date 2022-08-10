@@ -12,60 +12,65 @@
 		rel="stylesheet" />
 </head>
 
-	<header>
-		<h1 class="heading"> Calendar </h1>
-		<nav>
-			<ul>
-				<li style='list-style-type: none'>
-					<button type="button" class="raise"
-						onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Calendar.html"'>Calendar </button>
-				</li>
-				<li style='list-style-type: none'>
-					<button type="button" class="raise"
-						onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Options.html"'>Options </button>
-				</li>
-				<li style='list-style-type: none'>
-					<button type="button" class="raise"
-						onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/MainMenu.html"'>Main Menu </button>
-				</li>
-				<li style='list-style-type: none'>
-					<button type="button" class="raise"
-						onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Exercises.html"'>Exercises </button>
-				</li>
-				<li style='list-style-type: none'>
-					<button type="button" class="raise"
-						onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Playlists.html"'>Playlists </button>
-				</li>
-			</ul>
-		</nav>
-	</header>
+<header>
+	<h1 class="heading"> Calendar </h1>
+	<nav>
+		<ul>
+			<li style='list-style-type: none'>
+				<button type="button" class="raise"
+					onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Calendar.html"'>Calendar
+				</button>
+			</li>
+			<li style='list-style-type: none'>
+				<button type="button" class="raise"
+					onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Options.html"'>Options
+				</button>
+			</li>
+			<li style='list-style-type: none'>
+				<button type="button" class="raise"
+					onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/MainMenu.html"'>Main
+					Menu </button>
+			</li>
+			<li style='list-style-type: none'>
+				<button type="button" class="raise"
+					onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/Exercises.html"'>Exercises
+				</button>
+			</li>
+			<li style='list-style-type: none'>
+				<button type="button" class="raise"
+					onclick='window.location.href="http://loquacious-cat-52d8b6.netlify.app/HTML/ExercisePlaylists.html"'>Exercise Playlists
+				</button>
+			</li>
+		</ul>
+	</nav>
+</header>
 
-	<body>
-		<div class="container">
-			<div class="calendar">
-				<div class="month">
-					<i class="fas fa-angle-left prev"></i>
-					<div class="date">
-						<h1></h1>
-						<p></p>
-						<button onClick="exportFunction()" type="button" class="testButton">export</button>
-					</div>
-					<i class="fas fa-angle-right next"></i>
+<body>
+	<div class="container">
+		<div class="calendar">
+			<div class="month">
+				<i class="fas fa-angle-left prev"></i>
+				<div class="date">
+					<h1></h1>
+					<p></p>
+					<button onClick="exportFunction()" type="button" class="testButton">export</button>
 				</div>
-				<div class="weekdays">
-					<div>Sun</div>
-					<div>Mon</div>
-					<div>Tue</div>
-					<div>Wed</div>
-					<div>Thu</div>
-					<div>Fri</div>
-					<div>Sat</div>
-				</div>
-				<div class="days"></div>
+				<i class="fas fa-angle-right next"></i>
 			</div>
+			<div class="weekdays">
+				<div>Sun</div>
+				<div>Mon</div>
+				<div>Tue</div>
+				<div>Wed</div>
+				<div>Thu</div>
+				<div>Fri</div>
+				<div>Sat</div>
+			</div>
+			<div class="days"></div>
 		</div>
+	</div>
 
-<script src="./../JS/Calendar.js"></script>
+	<script src="./../JS/Calendar.js"></script>
 </body>
 
 </html>
