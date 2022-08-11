@@ -104,10 +104,11 @@ async function setup() {
 }
 
 function completeExercises() {
-	let trainedDaysOfCurrentMonth = JSON.parse(
-		localStorage.getItem("trainedDays"),
-		reviver
-	);
+	let trainedDaysOfCurrentMonth =
+		JSON.parse(localStorage.getItem("trainedDays"), reviver) === null
+			? new Array()
+			: JSON.parse(localStorage.getItem("trainedDays"), reviver);
+
 	let accuracy = 0;
 	totalAccuracy.forEach((acc) => (accuracy += acc / totalAccuracy.length));
 	if (
@@ -252,7 +253,7 @@ function draw() {
 	scale(-1, 1);
 	translate(-canvasWidth, 0);
 	image(video, 0, 0, canvasWidth, canvasHeight);
-	pop()
+	pop();
 	
 	if (pose) {
 		drawPose();
@@ -273,7 +274,7 @@ function drawPose() {
 		fill(0, 255, 0);
 		ellipse(x, y, 16, 16);
 	}
-	pop()
+	pop();
 }
 
 function drawSkeleton() {
@@ -287,7 +288,7 @@ function drawSkeleton() {
 		stroke(0, 0, 0);
 		line(a.x, a.y, b.x, b.y);
 	}
-	pop()
+	pop();
 }
 
 function writeWord(word, heigth) {
