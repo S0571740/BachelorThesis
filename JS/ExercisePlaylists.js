@@ -92,7 +92,7 @@ function createDivsExercises(exercise, playlistName) {
 }
 
 async function startUp() {
-	localStorage.setItem("lastLocation", "Playlists");
+	localStorage.setItem("lastLocation", "exerciseplaylists");
 	startMusic();
 	adjustBackground();
 	await loadExercises();
