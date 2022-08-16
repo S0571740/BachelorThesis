@@ -57,13 +57,17 @@ async function getExercise(name) {
 
 function createDivsPlaylist(playlistName, playlistExercises) {
 	let titel = playlistName;
+	let totalDuration = 0;
 	let exercises = "";
 	let exerciseNames = [];
 	for (let i = 0; i < playlistExercises.length; i++) {
+		let exercise = loadedExercises[lookUp.get(playlistExercises[i])];
+		totalDuration
 		exercises += createDivsExercises(
-			loadedExercises[lookUp.get(playlistExercises[i])],
+			exercise,
 			playlistName
 		);
+		totalDuration += exercise.duration;
 		if (i == 0) {
 			exerciseNames.push("['" + playlistExercises[i] + "'");
 		} else {
@@ -72,6 +76,7 @@ function createDivsPlaylist(playlistName, playlistExercises) {
 	}
 	exerciseNames.push("]");
 	let playlistStartButton = `<button type="button" class="playlistStartButton" onClick="startPlaylistFunction(${exerciseNames})")>${playlistName}: Start this playlist</button>`;
+	let label = `<label class="totalDuration">${timeToFormat(totalDuration)}</label>`
 	let playlistContainer = `<div class="playlistContainer" id="${playlistName}Container">${playlistStartButton}${exercises}</div>`;
 	return playlistContainer;
 }
@@ -89,6 +94,23 @@ function createDivsExercises(exercise, playlistName) {
 	let startButton = `<button type="button" class="startButton" onClick="startFunction('${exercise.name}')">Start single exercise</button>`;
 	let exerciseContainer = `<div class="exerciseContainer" id="${playlistName}${exercise.name}Container">${img}${title}${instructions}${duration}${trainedAreas}${startButton}</div>`;
 	return exerciseContainer;
+}
+
+function toTimeFormat(integerTime){
+	let minutes = 0;
+	let seconds = 0;
+	while(integerTime >= 60){
+		integerTime -= 60;
+		minutes++;
+	}
+	seconds = integerTime;
+	if(minutes < 10){
+		minutes = "0" + minutes;
+	}
+	if(seconds < 10){
+		seconds = "0" + seconds;
+	}
+	return minutes + ":" + seconds;
 }
 
 async function startUp() {
