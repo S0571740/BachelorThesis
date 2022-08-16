@@ -62,10 +62,7 @@ function createDivsPlaylist(playlistName, playlistExercises) {
 	let exerciseNames = [];
 	for (let i = 0; i < playlistExercises.length; i++) {
 		let exercise = loadedExercises[lookUp.get(playlistExercises[i])];
-		exercises += createDivsExercises(
-			exercise,
-			playlistName
-		);
+		exercises += createDivsExercises(exercise, playlistName);
 		totalDuration += toIntFormat(exercise.duration);
 		if (i == 0) {
 			exerciseNames.push("['" + playlistExercises[i] + "'");
@@ -75,8 +72,11 @@ function createDivsPlaylist(playlistName, playlistExercises) {
 	}
 	exerciseNames.push("]");
 	let playlistStartButton = `<button type="button" class="playlistStartButton" onClick="startPlaylistFunction(${exerciseNames})")>${playlistName}: Start this playlist</button>`;
-	let label = `<label class="totalDuration">${toTimeFormat(totalDuration)}</label>`
-	let playlistContainer = `<div class="playlistContainer" id="${playlistName}Container">${playlistStartButton}${label}${exercises}</div>`;
+	let label = `<label class="totalDuration">Total time for playlist: ${toTimeFormat(
+		totalDuration
+	)}</label>`;
+	let playlistDiv = `<div class="playlistDiv">${playlistStartButton}${label}</div>`;
+	let playlistContainer = `<div class="playlistContainer" id="${playlistName}Container">${playlistDiv}${exercises}</div>`;
 	return playlistContainer;
 }
 
@@ -95,28 +95,28 @@ function createDivsExercises(exercise, playlistName) {
 	return exerciseContainer;
 }
 
-function toTimeFormat(integerTime){
+function toTimeFormat(integerTime) {
 	let minutes = 0;
 	let seconds = 0;
-	while(integerTime >= 60){
+	while (integerTime >= 60) {
 		integerTime -= 60;
 		minutes++;
 	}
 	seconds = integerTime;
-	if(minutes < 10){
+	if (minutes < 10) {
 		minutes = "0" + minutes;
 	}
-	if(seconds < 10){
+	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
 	return minutes + ":" + seconds;
 }
 
-function toIntFormat(timeString){
+function toIntFormat(timeString) {
 	let minutes = parseInt(timeString.substring(0, 2));
 	let seconds = parseInt(timeString.substring(3));
 
-	return (minutes * 60 + seconds);
+	return minutes * 60 + seconds;
 }
 
 async function startUp() {
@@ -196,11 +196,13 @@ function startFunction(name) {
 	let playlist = new Array();
 	playlist.push(name);
 	localStorage.setItem("exercising", JSON.stringify(playlist, replacer));
-	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
+	window.location.href =
+		"http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 
 function startPlaylistFunction(exerciseArray) {
 	localStorage.setItem("exercising", JSON.stringify(exerciseArray, replacer));
-	window.location.href = "http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
+	window.location.href =
+		"http://loquacious-cat-52d8b6.netlify.app/HTML/Exercise.html";
 }
 startUp();

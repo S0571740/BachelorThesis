@@ -17,6 +17,18 @@ html {
 	background: rgba(255, 255, 255, 0.5);
 }
 
+.playlistDiv {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.playlistStartButton,
+.playlistLabel {
+	width: 50vw;
+}
+
 .exerciseContainer {
 	grid-area: exerciseContainer;
 
@@ -43,27 +55,34 @@ html {
 .image {
 	grid-area: image;
 }
+
 .title {
 	grid-area: title;
 }
+
 .duration {
 	grid-area: duration;
 }
+
 .areas {
 	grid-area: areas;
 }
+
 .playlistLabel {
 	grid-area: playlistLabel;
 }
+
 .playlistText {
 	grid-area: playlistText;
 }
+
 .playlistStartButton {
 	margin: 0.5em;
 	padding: 1em 2em;
 	--hover: #00ff04;
 	grid-area: playlistButton;
 }
+
 .startButton {
 	margin: 0.5em;
 	padding: 1em 2em;
@@ -88,7 +107,7 @@ nav ul {
 .playlistStartButton:hover,
 .playlistStartButton:focus,
 .startButton:hover,
-.startButton:focus  {
+.startButton:focus {
 	box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
 	transform: translateY(-0.25em);
 }
@@ -100,7 +119,7 @@ nav ul {
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 	background: rgba(255, 255, 255, 0.5);
 	border: 2px solid;
 	font: inherit;
