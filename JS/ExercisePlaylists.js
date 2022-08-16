@@ -76,7 +76,7 @@ function createDivsPlaylist(playlistName, playlistExercises) {
 	}
 	exerciseNames.push("]");
 	let playlistStartButton = `<button type="button" class="playlistStartButton" onClick="startPlaylistFunction(${exerciseNames})")>${playlistName}: Start this playlist</button>`;
-	let label = `<label class="totalDuration">${timeToFormat(totalDuration)}</label>`
+	let label = `<label class="totalDuration">${toTimeFormat(totalDuration)}</label>`
 	let playlistContainer = `<div class="playlistContainer" id="${playlistName}Container">${playlistStartButton}${exercises}</div>`;
 	return playlistContainer;
 }
