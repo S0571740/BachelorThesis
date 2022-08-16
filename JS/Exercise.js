@@ -157,17 +157,15 @@ function updateErrorLog(correctionTexts) {
 function updateScoreAndAccuracy(failed, perfect, notFound) {
 	let scoreElement = document.querySelector(".score");
 	let score = 0;
-	console.log(failed);
-	console.log(perfect);
-	if (failed + perfect !== 0) {
-		score = perfect / (failed + perfect);
+	if (failed + perfect !== 0) {												// Überprüfe, ob divisor 0 wäre.
+		score = perfect / (failed + perfect);									// Berechne neuen score, falls divisor nicht 0 ist
 	}
-	totalScore += score;
-	totalAccuracy.push(
-		((perfect + failed) / (perfect + failed + notFound)) * 100
+	totalScore += score;														// Die Gesamtpunktzahl berechnet sich linear
+	totalAccuracy.push(															// Da die Genauigkeit Prozentual berechnet wird,
+		((perfect + failed) / (perfect + failed + notFound)) * 100				// muss Evaluation ihre Genauigkeit speicher.
 	);
 	let accuracy = 0;
-	totalAccuracy.forEach((acc) => (accuracy += acc / totalAccuracy.length));
+	totalAccuracy.forEach((acc) => (accuracy += acc / totalAccuracy.length));	// Berechne die Genauigkeit abhängig von der Anzahl an Messung 
 	scoreElement.innerHTML =
 		"Current Score: " +
 		totalScore +
@@ -534,38 +532,60 @@ function everythingWithout(without) {
 	return everythingWithoutArray;
 }
 
+/**
+ * Checks if the given part is tracked or not
+ * 
+ * @param {*} part 
+ * @returns true if confidence is above 50%
+ */
 function isConfident(part) {
 	return part.confidence >= 0.5;
 }
 
+/**
+ * Checks if partA is on the same height as partB
+ * 
+ * @param {*} partA 
+ * @param {*} partB 
+ * @returns true if both parts are on the same height
+ */
 function horizontalTo(partA, partB) {
 	yOffSet = Math.abs(partA.y - partB.y);
 	return yOffSet <= video.height / 10;
 }
 
+/**
+ * Checks if partA is on the same width as partB
+ * 
+ * @param {*} partA 
+ * @param {*} partB 
+ * @returns true if both parts are on the same width
+ */
 function verticalTo(partA, partB) {
 	xOffSet = Math.abs(partA.x - partB.x);
 	return xOffSet <= video.width / 10;
 }
 
+/**
+ * checks if partA is above partB
+ * 
+ * @param {*} partA 
+ * @param {*} partB 
+ * @returns true if partA is above partB
+ */
 function above(partA, partB) {
 	return partA.y < partB.y;
 }
 
+/**
+ * checks if partA is below partB
+ * 
+ * @param {*} partA 
+ * @param {*} partB 
+ * @returns true if partA is below partB
+ */
 function below(partA, partB) {
 	return partA.y > partB.y;
-}
-
-function centerOf(part) {
-	if (Array.isArray(part) && part[0].x != undefined) {
-		let centerX = 0;
-		let centerY = 0;
-		for (let i = 0; i < part.length; i++) {
-			centerX += part[i].x;
-			centerY += part[i].y;
-		}
-		return { x: centerX / part.length, y: centerY / part.length };
-	}
 }
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------\\
