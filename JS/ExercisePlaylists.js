@@ -62,12 +62,11 @@ function createDivsPlaylist(playlistName, playlistExercises) {
 	let exerciseNames = [];
 	for (let i = 0; i < playlistExercises.length; i++) {
 		let exercise = loadedExercises[lookUp.get(playlistExercises[i])];
-		totalDuration
 		exercises += createDivsExercises(
 			exercise,
 			playlistName
 		);
-		totalDuration += exercise.duration;
+		totalDuration += toIntFormat(exercise.duration);
 		if (i == 0) {
 			exerciseNames.push("['" + playlistExercises[i] + "'");
 		} else {
@@ -111,6 +110,13 @@ function toTimeFormat(integerTime){
 		seconds = "0" + seconds;
 	}
 	return minutes + ":" + seconds;
+}
+
+function toIntFormat(timeString){
+	let minutes = parseInt(timeString.substring(0, 2));
+	let seconds = parseInt(timeString.substring(3));
+
+	return (minutes * 60 + seconds);
 }
 
 async function startUp() {
